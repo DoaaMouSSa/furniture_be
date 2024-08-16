@@ -3,6 +3,7 @@ const productSchema=mongoose.Schema({
     name:{type:String,required:true,unique:true},
     desc:{type:String},
     price:{type:Number,required:true},
+    image:{type:String},
     isDel:{type:Boolean},
 })
 const Product=mongoose.model('Product',productSchema);

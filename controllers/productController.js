@@ -1,13 +1,25 @@
 const Product = require('../models/product');
-const User =require('../models/product');
+const path = require('path');
+
 
 
 exports.createProduct=async(req,res)=>{
-    try{
     const{name,desc,price}=req.body;
-    const newProduct=await User.create({name,desc,price});
-    res.status(201).json(newProduct);
-    }catch(err)
+    const imageFile = req.file;
+    if (!name || !price || !imageFile) {
+        return res.status(400).send('Name, price, and image are required.');
+      }
+    const newProduct=new Product({ name: name,
+    desc: desc,
+    price: parseFloat(price),
+    image: `/uploads/${imageFile.filename}`
+    });
+    try {
+        // Save the item to the database
+        const savedProduct = await newProduct.save();
+        res.status(201).json(savedProduct);
+      } 
+    catch(err)
     {
         res.status(500).json(err)
     }
