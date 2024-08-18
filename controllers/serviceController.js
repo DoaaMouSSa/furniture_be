@@ -1,0 +1,30 @@
+const Service = require('../models/service');
+
+exports.createService=async(req,res)=>{
+    const{title,subTitle,paragraph,}=req.body;
+    const imageFile = req.file;
+    if (!title || !subTitle || !imageFile) {
+        return res.status(400).send('Name, subTitle, and image are required.');
+      }
+    const newService=new Service({ 
+    title: title,
+    subTitle: subTitle,
+    paragraph:paragraph,
+    image: `/uploads/${imageFile.filename}`
+    });
+    try {
+        // Save the item to the database
+        const savedService = await newService.save();
+        res.status(201).json(savedService);
+      } 
+    catch(err)
+    {
+        res.status(500).json(err)
+    }
+}
+
+exports.getAllServices=async(req,res)=>{
+    const services=await Service.find();
+    res.status(200).json(services);
+}
+

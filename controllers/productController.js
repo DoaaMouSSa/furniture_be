@@ -1,7 +1,4 @@
 const Product = require('../models/product');
-const path = require('path');
-
-
 
 exports.createProduct=async(req,res)=>{
     const{name,desc,price}=req.body;

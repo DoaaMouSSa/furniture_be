@@ -6,13 +6,22 @@ require('dotenv').config();
 //routes require
 const productRoutes=require('./routes/productRoutes');
 const testimonialRoutes=require('./routes/testimonialRoutes');
+const userRoutes=require('./routes/userRoutes');
+const statisticsRoutes=require('./routes/statisticsRoutes');
 
 const app=express();
-app.use(cors());
+app.use(cors({
+    origin:'http://localhost:4200',
+    credentials:true //cookies
+}));
 app.use(express.json());
+//connect with db
 connectDb();
-// Middleware to serve static files (e.g., uploaded images)
+//upload middleware
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+//routes
+app.use('/auth',userRoutes);
+app.use('/statis',statisticsRoutes);
 app.use('/product',productRoutes);
 app.use('/testimonial',testimonialRoutes);
 
