@@ -4,9 +4,10 @@ const connectDb=require('./config/db');
 const cors = require('cors');
 require('dotenv').config();
 //routes require
+const homeRoutes=require('./routes/HomeRoutes');
+const userRoutes=require('./routes/userRoutes');
 const productRoutes=require('./routes/productRoutes');
 const testimonialRoutes=require('./routes/testimonialRoutes');
-const userRoutes=require('./routes/userRoutes');
 const statisticsRoutes=require('./routes/statisticsRoutes');
 
 const app=express();
@@ -20,6 +21,7 @@ connectDb();
 //upload middleware
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 //routes
+app.use('/home',homeRoutes);
 app.use('/auth',userRoutes);
 app.use('/statis',statisticsRoutes);
 app.use('/product',productRoutes);
