@@ -26,23 +26,23 @@ exports.getAllProducts=async(req,res)=>{
     const products=await Product.find();
     res.status(200).json(products);
 }
+exports.getProduct=async(req,res)=>{
+   const product= await Product.findById(req.params.id);
+      res.status(202).json(product);  
+} 
 //find and update
-// router.put('/update/:id',async(req,res)=>{
-//     try{
-//        await Product.findByIdAndUpdate(req.params.id,req.body);
-//         res.status(202).json('updated');
-
-//     }catch(err){
-//     res.status(500).send(err.message);
-//     }    
-// }); 
-// //soft delete 
-// router.delete('/delete/:id',async(req,res)=>{
-//     try{
-//         await Product.findByIdAndUpdate(req.params.id,{isDel:true});
-//          res.status(203).json('deleted');
- 
-//      }catch(err){
-//      res.status(500).send(err.message);
-//      }     
-// }); 
+exports.updateProduct=async(req,res)=>{
+  const { id } = req.params;
+    const updatedData = req.body.name;
+  console.log('Update request received:', id, updatedData);
+  const product= await Product.findByIdAndUpdate(id,updatedData);
+       if (!product) {
+        return res.status(404).json({ message: 'Product not found' });
+      }
+        res.status(202).json(product);   
+} 
+//delete 
+exports.deleteProduct=async(req,res)=>{
+        await Product.findByIdAndDelete(req.params.id);
+         res.status(203).json('deleted');    
+}

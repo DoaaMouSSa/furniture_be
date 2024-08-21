@@ -4,7 +4,6 @@ const serviceSchema=mongoose.Schema({
     subTitle:{type:String},
     paragraph:{type:String,required:true},
     image:{type:String},
-    isDel:{type:Boolean},
 })
 const Service=mongoose.model('Service',serviceSchema);
 Service.syncIndexes();

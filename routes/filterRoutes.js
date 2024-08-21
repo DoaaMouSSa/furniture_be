@@ -1,2 +1,0 @@
-//newest products
-//featured products

@@ -9,11 +9,14 @@ const userRoutes=require('./routes/userRoutes');
 const productRoutes=require('./routes/productRoutes');
 const testimonialRoutes=require('./routes/testimonialRoutes');
 const statisticsRoutes=require('./routes/statisticsRoutes');
+const servicesRoutes=require('./routes/servicesRoutes');
+const chooseSectionRoutes=require('./routes/chooseSectionRoutes');
+const helpSectionRoutes=require('./routes/helpSectionRoutes');
 
 const app=express();
 app.use(cors({
     origin:'http://localhost:4200',
-    credentials:true //cookies
+    credentials:true
 }));
 app.use(express.json());
 //connect with db
@@ -26,6 +29,9 @@ app.use('/auth',userRoutes);
 app.use('/statis',statisticsRoutes);
 app.use('/product',productRoutes);
 app.use('/testimonial',testimonialRoutes);
+app.use('/service',servicesRoutes);
+app.use('/chooseSection',chooseSectionRoutes);
+app.use('/helpSection',helpSectionRoutes);
 
 const _port=process.env.port;
 

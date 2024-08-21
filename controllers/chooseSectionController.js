@@ -23,7 +23,7 @@ exports.createChooseSection=async(req,res)=>{
     }
 }
 
-exports.get=async(req,res)=>{
+exports.getChooseSection=async(req,res)=>{
     const chooseSection=await ChooseSection.findOne();
     res.status(200).json(chooseSection);
 }

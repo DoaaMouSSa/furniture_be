@@ -4,7 +4,6 @@ const productSchema=mongoose.Schema({
     desc:{type:String},
     price:{type:Number,required:true},
     image:{type:String},
-    isDel:{type:Boolean},
 })
 const Product=mongoose.model('Product',productSchema);
 Product.syncIndexes();

@@ -23,7 +23,7 @@ exports.createHelpSection=async(req,res)=>{
     }
 }
 
-exports.get=async(req,res)=>{
+exports.getHelpSection=async(req,res)=>{
     const helpSection=await HelpSection.findOne();
     res.status(200).json(helpSection);
 }
