@@ -27,4 +27,13 @@ exports.getAllServices=async(req,res)=>{
     const services=await Service.find();
     res.status(200).json(services);
 }
+exports.getService=async(req,res)=>{
+  const service= await Service.findById(req.params.id);
+     res.status(202).json(service);  
+} 
+//delete 
+exports.deleteService=async(req,res)=>{
+ await Service.findByIdAndDelete(req.params.id);
+  res.status(203).json('deleted');    
+}
 

@@ -1,4 +1,5 @@
 const Product = require('../models/product');
+const path = require('path');
 
 exports.createProduct=async(req,res)=>{
     const{name,desc,price}=req.body;
@@ -30,19 +31,22 @@ exports.getProduct=async(req,res)=>{
    const product= await Product.findById(req.params.id);
       res.status(202).json(product);  
 } 
+//delete 
+exports.deleteProduct=async(req,res)=>{
+  await Product.findByIdAndDelete(req.params.id);
+   res.status(203).json('deleted');    
+}
 //find and update
 exports.updateProduct=async(req,res)=>{
   const { id } = req.params;
-    const updatedData = req.body.name;
-  console.log('Update request received:', id, updatedData);
-  const product= await Product.findByIdAndUpdate(id,updatedData);
+  const {name,desc,price}=req.body;
+  const file = req.files['file'] ? req.files['file'][0].path : null;
+  const updatedData={ name,desc, price, image:file };
+    console.log(updatedData)
+  const product= await Product.findByIdAndUpdate(id,updatedData, { new: true });
        if (!product) {
         return res.status(404).json({ message: 'Product not found' });
       }
         res.status(202).json(product);   
 } 
-//delete 
-exports.deleteProduct=async(req,res)=>{
-        await Product.findByIdAndDelete(req.params.id);
-         res.status(203).json('deleted');    
-}
+

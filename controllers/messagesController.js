@@ -26,23 +26,12 @@ exports.getAllMessages=async(req,res)=>{
     const messages=await Message.find();
     res.status(200).json(messages);
 }
-//find and update
-// router.put('/update/:id',async(req,res)=>{
-//     try{
-//        await Product.findByIdAndUpdate(req.params.id,req.body);
-//         res.status(202).json('updated');
-
-//     }catch(err){
-//     res.status(500).send(err.message);
-//     }    
-// }); 
-// //soft delete 
-// router.delete('/delete/:id',async(req,res)=>{
-//     try{
-//         await Product.findByIdAndUpdate(req.params.id,{isDel:true});
-//          res.status(203).json('deleted');
- 
-//      }catch(err){
-//      res.status(500).send(err.message);
-//      }     
-// }); 
+exports.getMessage=async(req,res)=>{
+    const message= await Message.findById(req.params.id);
+       res.status(202).json(message);  
+ } 
+ //delete 
+ exports.deleteMessage=async(req,res)=>{
+   await Message.findByIdAndDelete(req.params.id);
+    res.status(203).json('deleted');    
+ }

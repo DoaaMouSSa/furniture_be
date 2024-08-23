@@ -28,23 +28,12 @@ exports.getAllTestimonials=async(req,res)=>{
     const testimonials=await Testimonial.find();
     res.status(200).json(testimonials);
 }
-//find and update
-// router.put('/update/:id',async(req,res)=>{
-//     try{
-//        await Testimonial.findByIdAndUpdate(req.params.id,req.body);
-//         res.status(202).json('updated');
-
-//     }catch(err){
-//     res.status(500).send(err.message);
-//     }    
-// }); 
-// //soft delete 
-// router.delete('/delete/:id',async(req,res)=>{
-//     try{
-//         await Testimonial.findByIdAndUpdate(req.params.id,{isDel:true});
-//          res.status(203).json('deleted');
- 
-//      }catch(err){
-//      res.status(500).send(err.message);
-//      }     
-// }); 
+exports.getTestimonial=async(req,res)=>{
+  const testimonial= await Testimonial.findById(req.params.id);
+     res.status(202).json(testimonial);  
+} 
+//delete 
+exports.deleteTestimonial=async(req,res)=>{
+ await Testimonial.findByIdAndDelete(req.params.id);
+  res.status(203).json('deleted');    
+}

@@ -17,3 +17,7 @@ exports.getServices=async(req,res)=>{
     const services=await Service.find().limit(4);
     res.status(200).json(services);
 }
+exports.getLatest=async(req,res)=>{
+    const products=await Product.find().limit(4);
+    res.status(200).json(products);
+}
