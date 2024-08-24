@@ -11,7 +11,7 @@ const serviceController=require('../controllers/serviceController');
 router.post('/add', upload.single('image'),serviceController.createService);
 router.get('/getAll',serviceController.getAllServices);
 router.get('/getById/:id',serviceController.getService);
-//router.put('/update/:id',serviceController.updateService);
+router.put('/update/:id',serviceController.updateService);
 router.delete('/delete/:id',serviceController.deleteService);
 
 module.exports=router;

@@ -8,6 +8,7 @@ const homeRoutes=require('./routes/HomeRoutes');
 const userRoutes=require('./routes/userRoutes');
 const productRoutes=require('./routes/productRoutes');
 const testimonialRoutes=require('./routes/testimonialRoutes');
+const messageRoutes=require('./routes/messagesRoutes');
 const statisticsRoutes=require('./routes/statisticsRoutes');
 const servicesRoutes=require('./routes/servicesRoutes');
 const chooseSectionRoutes=require('./routes/chooseSectionRoutes');
@@ -30,6 +31,7 @@ app.use('/statis',statisticsRoutes);
 app.use('/product',productRoutes);
 app.use('/testimonial',testimonialRoutes);
 app.use('/service',servicesRoutes);
+app.use('/message',messageRoutes);
 app.use('/chooseSection',chooseSectionRoutes);
 app.use('/helpSection',helpSectionRoutes);
 

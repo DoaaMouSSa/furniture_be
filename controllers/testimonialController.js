@@ -34,6 +34,17 @@ exports.getTestimonial=async(req,res)=>{
 } 
 //delete 
 exports.deleteTestimonial=async(req,res)=>{
- await Testimonial.findByIdAndDelete(req.params.id);
-  res.status(203).json('deleted');    
+  await Testimonial.findByIdAndDelete(req.params.id);
+   res.status(203).json('deleted');    
 }
+//find and update
+exports.updateTestimonial=async(req,res)=>{
+  const { id } = req.params;
+  const {name,comment,position}=req.body;
+  const updatedData={ name,comment, position };
+  const testimonial= await Testimonial.findByIdAndUpdate(id,updatedData, { new: true });
+       if (!testimonial) {
+        return res.status(404).json({ message: 'testimonial not found' });
+      }
+        res.status(202).json(testimonial);   
+} 

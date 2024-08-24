@@ -4,8 +4,9 @@ const homeContoller=require('../controllers/HomeController');
 
 
 
-router.get('/products',homeContoller.getProducts);
-router.get('/testimonials',homeContoller.getTestimonials);
+router.get('/product',homeContoller.getProducts);
+router.get('/testimonial',homeContoller.getTestimonials);
+router.get('/service',homeContoller.getServices);
 
 
 module.exports=router;

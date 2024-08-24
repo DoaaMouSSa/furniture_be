@@ -40,9 +40,7 @@ exports.deleteProduct=async(req,res)=>{
 exports.updateProduct=async(req,res)=>{
   const { id } = req.params;
   const {name,desc,price}=req.body;
-  const file = req.files['file'] ? req.files['file'][0].path : null;
-  const updatedData={ name,desc, price, image:file };
-    console.log(updatedData)
+  const updatedData={ name,desc, price };
   const product= await Product.findByIdAndUpdate(id,updatedData, { new: true });
        if (!product) {
         return res.status(404).json({ message: 'Product not found' });

@@ -1,7 +1,6 @@
 const express=require('express');
 const router=express.Router();
 const userContoller=require('../controllers/userContoller');
-const auth=require('../utilitize/authorization');
 
 
 

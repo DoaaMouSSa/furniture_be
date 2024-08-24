@@ -36,4 +36,14 @@ exports.deleteService=async(req,res)=>{
  await Service.findByIdAndDelete(req.params.id);
   res.status(203).json('deleted');    
 }
-
+//find and update
+exports.updateService=async(req,res)=>{
+ const { id } = req.params;
+ const {title,subTitle,paragraph}=req.body;
+ const updatedData={ title,subTitle, paragraph };
+ const service= await Service.findByIdAndUpdate(id,updatedData, { new: true });
+      if (!service) {
+       return res.status(404).json({ message: 'service not found' });
+     }
+       res.status(202).json(service);   
+} 
