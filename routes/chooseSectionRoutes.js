@@ -4,8 +4,8 @@ const chooseSectionController=require('../controllers/chooseSectionController');
 
 
 
-router.get('/add',chooseSectionController.createChooseSection);
 router.get('/get',chooseSectionController.getChooseSection);
+router.put('/update',chooseSectionController.updateChooseSection);
 
 
 module.exports=router;

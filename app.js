@@ -13,6 +13,7 @@ const statisticsRoutes=require('./routes/statisticsRoutes');
 const servicesRoutes=require('./routes/servicesRoutes');
 const chooseSectionRoutes=require('./routes/chooseSectionRoutes');
 const helpSectionRoutes=require('./routes/helpSectionRoutes');
+const infoRoutes=require('./routes/infoRoutes');
 
 const app=express();
 app.use(cors({
@@ -34,6 +35,7 @@ app.use('/service',servicesRoutes);
 app.use('/message',messageRoutes);
 app.use('/chooseSection',chooseSectionRoutes);
 app.use('/helpSection',helpSectionRoutes);
+app.use('/info',infoRoutes);
 
 const _port=process.env.port;
 
